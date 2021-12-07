@@ -19,9 +19,8 @@ if __name__ == '__main__':
     screen.onkey(key="s", fun=snake.down)
     screen.onkey(key="d", fun=snake.right)
 
-
-
     screen.update()
+
     while game_is_on:
         screen.update()
         time.sleep(0.2)
