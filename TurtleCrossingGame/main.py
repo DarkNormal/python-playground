@@ -24,8 +24,9 @@ def next_level():
     player1.reset()
     score.next_level()
 
+
 def game_over():
-    pass
+    score.end_game()
 
 
 game_is_on = True
@@ -43,3 +44,4 @@ while game_is_on:
         game_is_on = False
         game_over()
 
+screen.exitonclick()

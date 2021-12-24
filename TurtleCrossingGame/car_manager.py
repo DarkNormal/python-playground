@@ -40,10 +40,9 @@ class CarManager:
         self.move_speed += MOVE_INCREMENT
         for car in self.active_cars:
             car.move_speed = self.move_speed
-            self.reset_car(car)
 
     def detect_collision(self, player1):
         for car in self.active_cars:
-            if car.distance(player1) < 25:
+            if car.distance(player1) <= 20:
                 return True
         return False
