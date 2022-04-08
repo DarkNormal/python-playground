@@ -24,7 +24,12 @@ def start_timer():
 
 def countdown_timer(count):
     count_min = math.floor(count / 60)
+    if count_min < 10:
+        count_min = f"0{count_min}"
     count_sec = count % 60
+    if count_sec < 10:
+        count_sec = f"0{count_sec}"
+
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
         window.after(1000, countdown_timer, count -1)
