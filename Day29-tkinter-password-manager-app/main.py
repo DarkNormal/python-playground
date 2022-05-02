@@ -70,6 +70,21 @@ def save_password():
                 password_input.delete(0, END)
 
 
+# ---------------------------- SEARCH PASSWORD ------------------------------- #
+
+def search_password():
+    try:
+        with open("data.json", "r") as pw_file:
+            data = json.load(pw_file)
+    except FileNotFoundError:
+        messagebox.showwarning(title="No passwords", message="No password data file found.")
+    else:
+        website = website_input.get()
+        if website in data:
+            messagebox.showinfo(title=f"Details for {website}", message=f"Email: {data[website]['email']}\nPassword: {data[website]['password']}")
+        else:
+            messagebox.showinfo(title="Not found", message=f"Password details not found for site {website}")
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
@@ -87,6 +102,9 @@ website_label.grid(row=1, column=0)
 website_input = Entry(width=35)
 website_input.focus()
 website_input.grid(row=1, column=1, columnspan=2, sticky="ew")
+
+search_button = Button(text="Search", command=search_password)
+search_button.grid(row=1, column=2, sticky="ew")
 
 username_label = Label(text="Email/Username:")
 username_label.grid(row=2, column=0)
